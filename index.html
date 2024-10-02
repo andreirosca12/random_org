@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <form>
+        <div class="rezultate">
+            <p>Nume participanti:</p>
+            <p id="lista"></p>
+            <p id="rezultat"></p>
+        </div>
+        <div>
+            <label for="nume">Introdu un nume</label>
+            <input type="text" id="nume">
+        </div>
+        <div class="butoane">
+            <button id="adauga" type="button">Adauga</button>
+            <button id="alege" type="button">Alege</button>
+            <button id="reset" type="button">Reset</button>
+        </div>
+        
+    </form>
+    <script>
+        let persoane = [];
+        let adauga = document.getElementById("adauga");
+        let alege = document.getElementById("alege");
+        let nume = document.getElementById("nume");
+        let lista = document.getElementById("lista");
+        let rezultat=document.getElementById("rezultat")
+
+        nume.addEventListener('input',function(){
+            rezultat.innerHTML="";
+        })
+        adauga.onclick = function () {
+            let numep = nume.value;
+            if (numep === "") {
+                alert("Trebuie sa introduci un nume");
+            }
+            else{
+                persoane.push(numep);
+                lista.innerHTML = persoane.map(persoana => persoana).join();
+                nume.value = "";
+            }
+        }
+
+        alege.onclick=function(){
+            let size=persoane.length;
+            if(size<2)
+                alert("Trebuie sa adaugi minim 2 persoane inainte sa alegi");
+            else{
+                let rand=Math.floor(Math.random()*size);
+                rezultat.innerHTML=`Norocosul castigator este ${persoane[rand]}`;
+            }
+        }
+        reset.onclick=function(){
+            persoane=[];
+            lista.innerHTML="";
+            nume.value="";
+            rezultat.innerHTML="";
+        }
+    </script>
+</body>
+
+</html>
