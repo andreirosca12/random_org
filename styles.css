@@ -46,6 +46,7 @@ form div {
     max-width: 100%;
 }
 .butoane{
+    flex-wrap: wrap;
     justify-content: center;
 }
 button{
@@ -54,4 +55,14 @@ button{
     background-color: black;
     color: white;
     border-radius: 20px;
+}
+@media screen and (max-width:783px){
+    form{
+        padding: 30px;
+        justify-content:flex-start;
+        gap:50px;
+    }
+    button{
+        padding: 15px 20px;
+    }
 }
